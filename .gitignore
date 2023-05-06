@@ -1,0 +1,8 @@
+.DS_Store
+*.xcuserstate
+*.pbxuser
+*.xcodeproj/xcuserdata/*.xcuserdatad
+*.xcworkspace/xcuserdata/*.xcuserdatad
+*.xccheckout
+*.xcuserdatad
+*/Breakpoints_v2.xcbkptlist
