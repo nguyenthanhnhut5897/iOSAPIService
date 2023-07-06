@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ResponseError: Error {
-    case unacceptableCode(Int)
-    case unexpectedResponse(Any)
-}
+//public enum ResponseError: Error {
+//    case unacceptableCode(Int)
+//    case unexpectedResponse(Any)
+//}

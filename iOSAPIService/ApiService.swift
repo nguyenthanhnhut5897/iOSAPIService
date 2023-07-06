@@ -33,12 +33,11 @@ public class ApiService {
     
     public init(with apiSessionService: ApiSessionService,
                 decoder: ResponseDecoder = DefaultResponseDecoder(),
-                errorResolver: DataErrorResolver = DefaultDataErrorResolver(),
-                errorLogger: DataErrorLogger = DefaultDataErrorLogger()) {
+                errorResolver: DataErrorResolver = DefaultDataErrorResolver()) {
         self.apiSessionService = apiSessionService
         self.decoder = decoder
         self.errorResolver = errorResolver
-        self.errorLogger = errorLogger
+        self.errorLogger = DefaultDataErrorLogger()
     }
     
     private func resolve(networkError error: NetworkError) -> DataTransferError {

@@ -15,6 +15,8 @@ enum BodyEncoding {
 public class EncodingSupporter {
     static let shared = EncodingSupporter()
     
+    private init() {}
+    
     func encodeBody(bodyParameters: [String: Any], bodyEncoding: BodyEncoding) -> Data? {
         switch bodyEncoding {
         case .jsonSerializationData:

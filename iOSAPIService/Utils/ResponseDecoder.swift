@@ -15,7 +15,11 @@ public protocol ResponseDecoder {
 }
 
 public struct DefaultResponseDecoder: ResponseDecoder {
-    public init() {}
+    private let errorLogger: DataErrorLogger
+    
+    public init() {
+        self.errorLogger = DefaultDataErrorLogger()
+    }
     
     public func decode<E, T>(
         data: Data?,
@@ -29,6 +33,7 @@ public struct DefaultResponseDecoder: ResponseDecoder {
             
             return .success(result)
         } catch {
+            self.errorLogger.log(error: error)
             return .failure(.parsing(error))
         }
     }
