@@ -48,31 +48,54 @@ public class ApiService {
 }
 
 extension ApiService: ApiServiceProtocol {
-    func send<E, T>(with request: T, completion: @escaping CompletionHandler<E>) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable {
+    @discardableResult
+    func send<E, T>(
+        with request: T,
+        on queue: DataTransferDispatchQueue = DispatchQueue.main,
+        completion: @escaping CompletionHandler<E>
+    ) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable {
         
         return apiSessionService.send(request: request) { result in
             switch result {
             case .success(let data):
                 let result: Result<E, DataTransferError> = self.decoder.decode(data: data, from: request)
                 
-                completion(result)
+                queue.asyncExecute {
+                    completion(result, data)
+                }
             case .failure(let error):
                 self.errorLogger.log(error: error)
                 let error = self.resolve(networkError: error)
-                completion(.failure(error))
+                queue.asyncExecute {
+                    completion(.failure(error), nil)
+                }
             }
         }
     }
     
-    func send<E, T>(with request: T, completion: @escaping CompletionHandler<E>) -> SessionCancellable? where E == T.Response, T : Requestable {
-        return URLSessionTask()
-    }
-    
-    func send<E, T, C>(with request: T, config: C, completion: @escaping CompletionHandler<E>) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable, C : ApiConfigurable {
-        return URLSessionTask()
-    }
-    
-    func send<E, T, C>(with request: T, config: C, completion: @escaping CompletionHandler<E>) -> SessionCancellable? where E == T.Response, T : Requestable, C : ApiConfigurable {
-        return URLSessionTask()
+    @discardableResult
+    func send<E, T, C>(
+        with request: T,
+        config: C,
+        on queue: DataTransferDispatchQueue = DispatchQueue.main,
+        completion: @escaping CompletionHandler<E>
+    ) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable, C : ApiConfigurable {
+        
+        return apiSessionService.send(request: request, config: config) { result in
+            switch result {
+            case .success(let data):
+                let result: Result<E, DataTransferError> = self.decoder.decode(data: data, from: request)
+                
+                queue.asyncExecute {
+                    completion(result, data)
+                }
+            case .failure(let error):
+                self.errorLogger.log(error: error)
+                let error = self.resolve(networkError: error)
+                queue.asyncExecute {
+                    completion(.failure(error), nil)
+                }
+            }
+        }
     }
 }

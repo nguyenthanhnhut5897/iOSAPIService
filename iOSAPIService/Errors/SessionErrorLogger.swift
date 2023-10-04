@@ -11,6 +11,7 @@ protocol SessionErrorLogger {
     func log(request: URLRequest)
     func log(responseData data: Data?, response: URLResponse?)
     func log(error: Error)
+    func log(text: String)
 }
 
 struct DefaultSessionErrorLogger: SessionErrorLogger {
@@ -36,7 +37,11 @@ struct DefaultSessionErrorLogger: SessionErrorLogger {
     }
 
     func log(error: Error) {
-        printIfDebug("\(error)")
+        printIfDebug("Request failed: \(error)")
+    }
+    
+    func log(text: String) {
+        printIfDebug(text)
     }
 }
 

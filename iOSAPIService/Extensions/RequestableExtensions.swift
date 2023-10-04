@@ -16,7 +16,7 @@ extension Requestable {
         return [:]
     }
     
-    var HTTPAdditionalHeaders: [String: String] {
+    var additionalHeaders: [String: String] {
         return [:]
     }
     
@@ -43,7 +43,8 @@ extension Requestable {
     // MARK: - Decoding
     
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
-        return .deferredToDate
+        let dateFormatter = APIDateFormatter.shared.formatter(for: APIDateFormat.default)
+        return .formatted(dateFormatter)
     }
     
     var dataDecodingStrategy: JSONDecoder.DataDecodingStrategy {
@@ -77,6 +78,10 @@ extension Requestable {
         return Constants.AllowDelayProgressive
     }
     
+    var fatalStatusCodes: [Int] {
+        return []
+    }
+    
     
     // MARK: - Cache
     
@@ -86,7 +91,7 @@ extension Requestable {
 }
 
 extension Requestable {
-    internal var decoder: JSONDecoder {
+    var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         
         decoder.dateDecodingStrategy = dateDecodingStrategy
@@ -98,13 +103,28 @@ extension Requestable {
         return decoder
     }
     
+    var defaultConfig: ApiConfigurable? {
+        guard let baseURL = baseURL else { return nil }
+        
+        let config = ApiDataConfigurable(baseURL: baseURL,
+                                         sessionToken: sessionToken,
+                                         cachePolicy: cachePolicy,
+                                         timeoutInterval: timeoutInterval,
+                                         additionalHeaders: additionalHeaders,
+                                         fatalStatusCodes: fatalStatusCodes,
+                                         retryCount: retryCount,
+                                         retryTimeInterval: retryTimeInterval,
+                                         allowDelayProgressive: allowDelayProgressive)
+        return config
+    }
+    
     // The delay time before start the next retry
-    internal func delayTimeInterval(retryRemaining: Int) -> TimeInterval {
-        guard allowDelayProgressive else {
-            return retryTimeInterval
+    func delayTimeInterval(retryRemaining: Int, config: ApiConfigurable) -> TimeInterval {
+        guard config.allowDelayProgressive else {
+            return config.retryTimeInterval
         }
             
-        return retryTimeInterval * pow(2, Double(retryCount) - Double(retryRemaining))
+        return config.retryTimeInterval * pow(2, Double(config.retryCount) - Double(retryRemaining))
     }
     
     private func makeHeaderField(config: ApiConfigurable) -> [String: String] {
@@ -119,13 +139,7 @@ extension Requestable {
     }
     
     func makeURLRequest() -> URLRequest? {
-        guard let baseURL = baseURL else { return nil }
-        
-        let config = ApiDataConfigurable(baseURL: baseURL,
-                                         sessionToken: sessionToken,
-                                         cachePolicy: cachePolicy,
-                                         timeoutInterval: timeoutInterval,
-                                         additionalHeaders: HTTPAdditionalHeaders)
+        guard let config = defaultConfig else { return nil }
         
         return makeURLRequest(with: config)
     }

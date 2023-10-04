@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D2C9D642ACC06DF00FD1E7E /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D632ACC06DF00FD1E7E /* AnyDecodable.swift */; };
+		6D2C9D662ACC0FE300FD1E7E /* DataTransferDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D652ACC0FE300FD1E7E /* DataTransferDispatchQueue.swift */; };
+		6D2C9D682ACD63F400FD1E7E /* APIDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D672ACD63F400FD1E7E /* APIDateFormatter.swift */; };
+		6D2C9D6B2ACD667D00FD1E7E /* APICacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D6A2ACD667D00FD1E7E /* APICacheProtocol.swift */; };
+		6D2C9D6D2ACD66CA00FD1E7E /* APIStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D6C2ACD66CA00FD1E7E /* APIStorage.swift */; };
+		6D2C9D6F2ACD66F200FD1E7E /* APIStorageExpiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D6E2ACD66F200FD1E7E /* APIStorageExpiration.swift */; };
+		6D2C9D712ACD677D00FD1E7E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D702ACD677D00FD1E7E /* DateExtensions.swift */; };
+		6D2C9D732ACD694700FD1E7E /* APICacheCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D722ACD694700FD1E7E /* APICacheCenter.swift */; };
 		90986CF32A0686BA00EC6423 /* iOSAPIService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 90986CF22A0686BA00EC6423 /* iOSAPIService.docc */; };
 		90986CF42A0686BA00EC6423 /* iOSAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 90986CF12A0686BA00EC6423 /* iOSAPIService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90F6D1522A069B4500876700 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F6D1512A069B4500876700 /* HTTPMethod.swift */; };
@@ -33,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D2C9D632ACC06DF00FD1E7E /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
+		6D2C9D652ACC0FE300FD1E7E /* DataTransferDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDispatchQueue.swift; sourceTree = "<group>"; };
+		6D2C9D672ACD63F400FD1E7E /* APIDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDateFormatter.swift; sourceTree = "<group>"; };
+		6D2C9D6A2ACD667D00FD1E7E /* APICacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICacheProtocol.swift; sourceTree = "<group>"; };
+		6D2C9D6C2ACD66CA00FD1E7E /* APIStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStorage.swift; sourceTree = "<group>"; };
+		6D2C9D6E2ACD66F200FD1E7E /* APIStorageExpiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStorageExpiration.swift; sourceTree = "<group>"; };
+		6D2C9D702ACD677D00FD1E7E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		6D2C9D722ACD694700FD1E7E /* APICacheCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICacheCenter.swift; sourceTree = "<group>"; };
 		90986CEE2A0686BA00EC6423 /* iOSAPIService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOSAPIService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90986CF12A0686BA00EC6423 /* iOSAPIService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSAPIService.h; sourceTree = "<group>"; };
 		90986CF22A0686BA00EC6423 /* iOSAPIService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = iOSAPIService.docc; sourceTree = "<group>"; };
@@ -70,6 +86,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D2C9D692ACD664000FD1E7E /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				6D2C9D6A2ACD667D00FD1E7E /* APICacheProtocol.swift */,
+				6D2C9D6C2ACD66CA00FD1E7E /* APIStorage.swift */,
+				6D2C9D6E2ACD66F200FD1E7E /* APIStorageExpiration.swift */,
+				6D2C9D722ACD694700FD1E7E /* APICacheCenter.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		90986CE42A0686BA00EC6423 = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +124,8 @@
 				90F6D15F2A0E40DF00876700 /* Constants.swift */,
 				90F6D1512A069B4500876700 /* HTTPMethod.swift */,
 				90F6D1802A11159500876700 /* ApiSessionConfigurationType.swift */,
-				90F6D1632A0FB09000876700 /* ApiSessionManager.swift */,
 				90F6D15B2A095F7800876700 /* ApiConfigurable.swift */,
+				90F6D1632A0FB09000876700 /* ApiSessionManager.swift */,
 				90F6D1692A0FCE6400876700 /* ApiSessionService.swift */,
 				90F6D16B2A0FDA7C00876700 /* ApiService.swift */,
 				90986CF22A0686BA00EC6423 /* iOSAPIService.docc */,
@@ -122,6 +149,7 @@
 		90F6D1542A08F47200876700 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6D2C9D702ACD677D00FD1E7E /* DateExtensions.swift */,
 				90F6D1552A08F48400876700 /* ErrorExtensions.swift */,
 				90F6D17D2A1102D000876700 /* DictionaryExtensions.swift */,
 				90F6D15D2A095FAF00876700 /* RequestableExtensions.swift */,
@@ -135,6 +163,7 @@
 				90F6D1592A09038600876700 /* Requestable.swift */,
 				90F6D1652A0FB0B700876700 /* SessionCancellable.swift */,
 				90F6D1732A0FF13800876700 /* ApiServiceProtocol.swift */,
+				6D2C9D652ACC0FE300FD1E7E /* DataTransferDispatchQueue.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -142,8 +171,11 @@
 		90F6D17F2A1104DF00876700 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6D2C9D692ACD664000FD1E7E /* Cache */,
 				90F6D17B2A11021F00876700 /* BodyEncoding.swift */,
 				90F6D1752A10070E00876700 /* ResponseDecoder.swift */,
+				6D2C9D632ACC06DF00FD1E7E /* AnyDecodable.swift */,
+				6D2C9D672ACD63F400FD1E7E /* APIDateFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -230,23 +262,31 @@
 				90F6D15A2A09038600876700 /* Requestable.swift in Sources */,
 				90F6D1602A0E40DF00876700 /* Constants.swift in Sources */,
 				90F6D1662A0FB0B700876700 /* SessionCancellable.swift in Sources */,
+				6D2C9D6F2ACD66F200FD1E7E /* APIStorageExpiration.swift in Sources */,
 				90F6D1522A069B4500876700 /* HTTPMethod.swift in Sources */,
 				90986CF32A0686BA00EC6423 /* iOSAPIService.docc in Sources */,
+				6D2C9D642ACC06DF00FD1E7E /* AnyDecodable.swift in Sources */,
 				90F6D15C2A095F7800876700 /* ApiConfigurable.swift in Sources */,
 				90F6D1622A0FAF6F00876700 /* SessionErrorLogger.swift in Sources */,
 				90F6D1562A08F48400876700 /* ErrorExtensions.swift in Sources */,
 				90F6D17E2A1102D000876700 /* DictionaryExtensions.swift in Sources */,
 				90F6D1642A0FB09000876700 /* ApiSessionManager.swift in Sources */,
+				6D2C9D6B2ACD667D00FD1E7E /* APICacheProtocol.swift in Sources */,
 				90F6D1682A0FB21F00876700 /* NetworkError.swift in Sources */,
+				6D2C9D732ACD694700FD1E7E /* APICacheCenter.swift in Sources */,
 				90F6D1722A0FDB8F00876700 /* DataTransferError.swift in Sources */,
 				90F6D1812A11159500876700 /* ApiSessionConfigurationType.swift in Sources */,
+				6D2C9D662ACC0FE300FD1E7E /* DataTransferDispatchQueue.swift in Sources */,
 				90F6D17A2A10F4C600876700 /* DataErrorResolver.swift in Sources */,
 				90F6D1742A0FF13800876700 /* ApiServiceProtocol.swift in Sources */,
 				90F6D1762A10070E00876700 /* ResponseDecoder.swift in Sources */,
 				90F6D16A2A0FCE6400876700 /* ApiSessionService.swift in Sources */,
 				90F6D1582A08FE5300876700 /* ResponseError.swift in Sources */,
+				6D2C9D712ACD677D00FD1E7E /* DateExtensions.swift in Sources */,
 				90F6D15E2A095FAF00876700 /* RequestableExtensions.swift in Sources */,
 				90F6D1782A10F4A000876700 /* DataErrorLogger.swift in Sources */,
+				6D2C9D6D2ACD66CA00FD1E7E /* APIStorage.swift in Sources */,
+				6D2C9D682ACD63F400FD1E7E /* APIDateFormatter.swift in Sources */,
 				90F6D17C2A11021F00876700 /* BodyEncoding.swift in Sources */,
 				90F6D16C2A0FDA7C00876700 /* ApiService.swift in Sources */,
 			);

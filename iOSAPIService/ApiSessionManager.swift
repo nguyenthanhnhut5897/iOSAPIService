@@ -31,14 +31,14 @@ public struct DefaultApiSessionManager: ApiSessionManager {
     }
     
     static func urlSessionConfig(with configType: ApiSessionConfigurationType) -> URLSessionConfiguration {
-        var config = URLSessionConfiguration.default
+        var config: URLSessionConfiguration = .default
         
         switch configType {
         case .ephemeral:
-            config = URLSessionConfiguration.ephemeral
-        case .custom(_, let customType):
+            config = .ephemeral
+        case .custom(_ , let customType):
             if customType == .ephemeral {
-                config = URLSessionConfiguration.ephemeral
+                config = .ephemeral
             }
         default:
             break

@@ -13,6 +13,7 @@ public protocol ApiConfigurable {
     var additionalHeaders: [String: String] { get }
     var cachePolicy: NSURLRequest.CachePolicy { get }
     var timeoutInterval: TimeInterval { get }
+    var fatalStatusCodes: [Int] { get }
     
     var retryCount: Int { get }
     var retryTimeInterval: TimeInterval { get }
@@ -25,6 +26,7 @@ public struct ApiDataConfigurable: ApiConfigurable {
     public var additionalHeaders: [String: String]
     public var cachePolicy: NSURLRequest.CachePolicy
     public var timeoutInterval: TimeInterval
+    public var fatalStatusCodes: [Int]
     
     public var retryCount: Int
     public var retryTimeInterval: TimeInterval
@@ -35,6 +37,7 @@ public struct ApiDataConfigurable: ApiConfigurable {
          cachePolicy: NSURLRequest.CachePolicy = Constants.CachePolicy,
          timeoutInterval: TimeInterval = Constants.TimeoutInterval,
          additionalHeaders: [String: String] = [:],
+         fatalStatusCodes: [Int] = [],
          retryCount: Int = Constants.RetryCount,
          retryTimeInterval: TimeInterval = Constants.RetryTimeInterval,
          allowDelayProgressive: Bool = Constants.AllowDelayProgressive) {
@@ -44,6 +47,7 @@ public struct ApiDataConfigurable: ApiConfigurable {
         self.cachePolicy = cachePolicy
         self.timeoutInterval = timeoutInterval
         self.additionalHeaders = additionalHeaders
+        self.fatalStatusCodes = fatalStatusCodes
         
         self.retryCount = retryCount
         self.retryTimeInterval = retryTimeInterval

@@ -44,6 +44,9 @@ public protocol Requestable {
     // Default is 60 seconds
     var timeoutInterval: TimeInterval { get }
     
+    // Fatal status codes what you want. Default is []
+    var fatalStatusCodes: [Int] { get }
+    
     
     // MARK: - Decoding
     

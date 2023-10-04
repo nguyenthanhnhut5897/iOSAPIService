@@ -13,4 +13,5 @@ public enum NetworkError: Error {
     case cancelled
     case generic(Error)
     case urlGeneration
+    case baseURLNotExist
 }
