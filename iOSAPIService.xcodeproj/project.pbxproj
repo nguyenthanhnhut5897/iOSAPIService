@@ -15,6 +15,7 @@
 		6D2C9D6F2ACD66F200FD1E7E /* APIStorageExpiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D6E2ACD66F200FD1E7E /* APIStorageExpiration.swift */; };
 		6D2C9D712ACD677D00FD1E7E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D702ACD677D00FD1E7E /* DateExtensions.swift */; };
 		6D2C9D732ACD694700FD1E7E /* APICacheCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9D722ACD694700FD1E7E /* APICacheCenter.swift */; };
+		6D2C9E472ACE5E6700FD1E7E /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C9E462ACE5E6700FD1E7E /* URLRequestExtensions.swift */; };
 		90986CF32A0686BA00EC6423 /* iOSAPIService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 90986CF22A0686BA00EC6423 /* iOSAPIService.docc */; };
 		90986CF42A0686BA00EC6423 /* iOSAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 90986CF12A0686BA00EC6423 /* iOSAPIService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90F6D1522A069B4500876700 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F6D1512A069B4500876700 /* HTTPMethod.swift */; };
@@ -49,6 +50,7 @@
 		6D2C9D6E2ACD66F200FD1E7E /* APIStorageExpiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStorageExpiration.swift; sourceTree = "<group>"; };
 		6D2C9D702ACD677D00FD1E7E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		6D2C9D722ACD694700FD1E7E /* APICacheCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICacheCenter.swift; sourceTree = "<group>"; };
+		6D2C9E462ACE5E6700FD1E7E /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
 		90986CEE2A0686BA00EC6423 /* iOSAPIService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOSAPIService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90986CF12A0686BA00EC6423 /* iOSAPIService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSAPIService.h; sourceTree = "<group>"; };
 		90986CF22A0686BA00EC6423 /* iOSAPIService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = iOSAPIService.docc; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				90F6D1552A08F48400876700 /* ErrorExtensions.swift */,
 				90F6D17D2A1102D000876700 /* DictionaryExtensions.swift */,
 				90F6D15D2A095FAF00876700 /* RequestableExtensions.swift */,
+				6D2C9E462ACE5E6700FD1E7E /* URLRequestExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				90F6D1722A0FDB8F00876700 /* DataTransferError.swift in Sources */,
 				90F6D1812A11159500876700 /* ApiSessionConfigurationType.swift in Sources */,
 				6D2C9D662ACC0FE300FD1E7E /* DataTransferDispatchQueue.swift in Sources */,
+				6D2C9E472ACE5E6700FD1E7E /* URLRequestExtensions.swift in Sources */,
 				90F6D17A2A10F4C600876700 /* DataErrorResolver.swift in Sources */,
 				90F6D1742A0FF13800876700 /* ApiServiceProtocol.swift in Sources */,
 				90F6D1762A10070E00876700 /* ResponseDecoder.swift in Sources */,

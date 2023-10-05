@@ -29,7 +29,7 @@ extension Requestable {
     }
     
     var isAuthorizedRequest: Bool {
-        return false
+        return true
     }
     
     var sessionToken: String? {
@@ -147,7 +147,7 @@ extension Requestable {
     func makeURLRequest(with config: ApiConfigurable) -> URLRequest? {
         let url = config.baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: url, cachePolicy: config.cachePolicy, timeoutInterval: config.timeoutInterval)
-        var header: [String: String] = makeHeaderField(config: config)
+        let header: [String: String] = makeHeaderField(config: config)
         
         urlRequest.httpMethod = httpMethod.rawValue
         

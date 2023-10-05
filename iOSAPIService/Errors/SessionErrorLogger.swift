@@ -11,7 +11,7 @@ protocol SessionErrorLogger {
     func log(request: URLRequest)
     func log(responseData data: Data?, response: URLResponse?)
     func log(error: Error)
-    func log(text: String)
+    func log(_ content: Any)
 }
 
 struct DefaultSessionErrorLogger: SessionErrorLogger {
@@ -40,13 +40,13 @@ struct DefaultSessionErrorLogger: SessionErrorLogger {
         printIfDebug("Request failed: \(error)")
     }
     
-    func log(text: String) {
-        printIfDebug(text)
+    func log(_ content: Any) {
+        printIfDebug(content)
     }
 }
 
-func printIfDebug(_ string: String) {
+func printIfDebug(_ content: Any) {
     #if DEBUG
-    print(string)
+    print(content)
     #endif
 }

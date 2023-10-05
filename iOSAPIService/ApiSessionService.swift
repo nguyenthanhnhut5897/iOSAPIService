@@ -49,6 +49,24 @@ class DefaultApiSessionService {
             return .generic(error)
         }
     }
+    
+    private func resolve(errorData: Data?) -> NetworkError {
+        guard let errorData = errorData else { return .dataNotFound }
+        
+        do {
+            let errJson = try JSONSerialization.jsonObject(with: errorData, options: .allowFragments)
+            let json = errJson as? [String: Any]
+            let code = (json?["status"] as? Int) ?? 0
+            
+            //print error json object if data is serializable
+            self.logger.log(errJson)
+                
+            return .error(statusCode: code, data: errorData, json: json)
+            
+        } catch let serializationError {
+            return .generic(serializationError)
+        }
+    }
 }
 
 extension DefaultApiSessionService: ApiSessionService {
@@ -70,6 +88,7 @@ extension DefaultApiSessionService: ApiSessionService {
         }
         
         logger.log(request: urlRequest)
+        logger.log(urlRequest.cURL(pretty: true))
         
         return send(request: request,
                     urlRequest: urlRequest,
@@ -93,15 +112,15 @@ extension DefaultApiSessionService: ApiSessionService {
                 
             case let .failure(error):
                 switch error {
-                case let .error(code, _):
+                case let .error(code, _, _):
                     if self?.isErrorFatal(code) == true || config.fatalStatusCodes.contains(error.code) {
-                        self?.logger.log(text: "Request failed with fatal error: \(error) - Will not try again")
+                        self?.logger.log("Request failed with fatal error: \(error) - Will not try again")
                         completion(.failure(error))
                         return
                     }
                 case let .generic(err):
                     if self?.isErrorFatal(err.code) == true || config.fatalStatusCodes.contains(error.code) {
-                        self?.logger.log(text: "Request failed with fatal error: \(error) - Will not try again")
+                        self?.logger.log("Request failed with fatal error: \(error) - Will not try again")
                         completion(.failure(error))
                         return
                     }
@@ -110,12 +129,13 @@ extension DefaultApiSessionService: ApiSessionService {
                 }
                 
                 guard retryRemaining > 0 else {
-                    self?.logger.log(text: "Request failed: \(error), \(retryRemaining) attempt/s left")
+                    self?.logger.log("Request failed: \(error), \(retryRemaining) attempt/s left")
                     completion(.failure(error))
                     return
                 }
                 
                 self?.logger.log(error: error)
+                self?.logger.log("------\(retryRemaining - 1) attempt/s left -----")
                 let delayTime: TimeInterval = request.delayTimeInterval(retryRemaining: retryRemaining, config: config)
                 
                 DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + delayTime, execute: { [weak self] in
@@ -134,10 +154,16 @@ extension DefaultApiSessionService: ApiSessionService {
                 var error: NetworkError
                 
                 if let response = response as? HTTPURLResponse {
-                    error = .error(statusCode: response.statusCode, data: data)
+                    error = .error(statusCode: response.statusCode, data: data, json: nil)
                 } else {
                     error = self.resolve(error: requestError)
                 }
+                
+                completion(.failure(error))
+            }
+            // To successfully decode to T.Response.self, the status code must not between 0 and 299
+            else if let httpResponse = response as? HTTPURLResponse, !(0..<300).contains(httpResponse.statusCode) {
+                let error: NetworkError = self.resolve(errorData: data)
                 
                 completion(.failure(error))
             } else {
