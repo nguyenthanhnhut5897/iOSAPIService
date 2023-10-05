@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ApiSessionService {
+public protocol ApiSessionService {
     typealias CompletionResult = Result<Data?, NetworkError>
     typealias CompletionHandler = (CompletionResult) -> Void
     
