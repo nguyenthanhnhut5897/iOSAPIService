@@ -32,15 +32,15 @@ public struct ApiDataConfigurable: ApiConfigurable {
     public var retryTimeInterval: TimeInterval
     public var allowDelayProgressive: Bool
 
-    init(baseURL: URL,
-         sessionToken: String? = nil,
-         cachePolicy: NSURLRequest.CachePolicy = Constants.CachePolicy,
-         timeoutInterval: TimeInterval = Constants.TimeoutInterval,
-         additionalHeaders: [String: String] = [:],
-         fatalStatusCodes: [Int] = [],
-         retryCount: Int = Constants.RetryCount,
-         retryTimeInterval: TimeInterval = Constants.RetryTimeInterval,
-         allowDelayProgressive: Bool = Constants.AllowDelayProgressive) {
+    public init(baseURL: URL,
+                sessionToken: String? = nil,
+                cachePolicy: NSURLRequest.CachePolicy = Constants.CachePolicy,
+                timeoutInterval: TimeInterval = Constants.TimeoutInterval,
+                additionalHeaders: [String: String] = [:],
+                fatalStatusCodes: [Int] = [],
+                retryCount: Int = Constants.RetryCount,
+                retryTimeInterval: TimeInterval = Constants.RetryTimeInterval,
+                allowDelayProgressive: Bool = Constants.AllowDelayProgressive) {
         
         self.baseURL = baseURL
         self.sessionToken = sessionToken

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Requestable {
+public extension Requestable {
     var baseURL: URL? {
         return nil
     }
@@ -90,7 +90,7 @@ extension Requestable {
     }
 }
 
-extension Requestable {
+public extension Requestable {
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         

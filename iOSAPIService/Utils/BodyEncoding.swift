@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BodyEncoding {
+public enum BodyEncoding {
     case jsonSerializationData
     case stringEncodingAscii
 }
@@ -17,7 +17,7 @@ public class EncodingSupporter {
     
     private init() {}
     
-    func encodeBody(bodyParameters: [String: Any], bodyEncoding: BodyEncoding) -> Data? {
+    public func encodeBody(bodyParameters: [String: Any], bodyEncoding: BodyEncoding) -> Data? {
         switch bodyEncoding {
         case .jsonSerializationData:
             return try? JSONSerialization.data(withJSONObject: bodyParameters)

@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol DataTransferDispatchQueue {
+public protocol DataTransferDispatchQueue {
     func asyncExecute(work: @escaping () -> Void)
 }
 
 extension DispatchQueue: DataTransferDispatchQueue {
-    func asyncExecute(work: @escaping () -> Void) {
+    public func asyncExecute(work: @escaping () -> Void) {
         async(group: nil, execute: work)
     }
 }

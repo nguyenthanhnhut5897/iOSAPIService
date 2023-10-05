@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum AnyDecodable: Decodable {
+public enum AnyDecodable: Decodable {
     
     case number(Double)
     case string(String)
     case none
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         if let doubleValue = try? decoder.singleValueContainer().decode(Double.self) {
             self = .number(doubleValue)
         } else if let stringValue = try? decoder.singleValueContainer().decode(String.self) {
@@ -23,7 +23,7 @@ enum AnyDecodable: Decodable {
         }
     }
 
-    var valueAny: Any? {
+    public var valueAny: Any? {
         get {
             switch self {
             case .number(let value):

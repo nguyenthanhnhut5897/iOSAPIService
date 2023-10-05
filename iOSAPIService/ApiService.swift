@@ -49,7 +49,7 @@ public class ApiService {
 
 extension ApiService: ApiServiceProtocol {
     @discardableResult
-    func send<E, T>(
+    public func send<E, T>(
         with request: T,
         on queue: DataTransferDispatchQueue = DispatchQueue.main,
         completion: @escaping CompletionHandler<E>
@@ -74,7 +74,7 @@ extension ApiService: ApiServiceProtocol {
     }
     
     @discardableResult
-    func send<E, T, C>(
+    public func send<E, T, C>(
         with request: T,
         config: C,
         on queue: DataTransferDispatchQueue = DispatchQueue.main,

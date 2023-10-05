@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct APIDateFormat {
-    static let `default` = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+public struct APIDateFormat {
+    public static let `default` = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 }
 
 public class APIDateFormatter {

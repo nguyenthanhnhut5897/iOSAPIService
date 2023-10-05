@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ApiServiceProtocol {
+public protocol ApiServiceProtocol {
     typealias CompletionHandler<E> = (Result<E, DataTransferError>, Data?) -> Void
     
     @discardableResult

@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Constants {
-    static let CachePolicy: NSURLRequest.CachePolicy = .useProtocolCachePolicy
-    static let TimeoutInterval: TimeInterval = 60.0 //60s
-    static let RetryCount: Int = 3
-    static let RetryTimeInterval: TimeInterval = 0
-    static let AllowDelayProgressive: Bool = true
+public struct Constants {
+    public static let CachePolicy: NSURLRequest.CachePolicy = .useProtocolCachePolicy
+    public static let TimeoutInterval: TimeInterval = 60.0 //60s
+    public static let RetryCount: Int = 3
+    public static let RetryTimeInterval: TimeInterval = 0
+    public static let AllowDelayProgressive: Bool = true
 }
 
 extension Constants {
