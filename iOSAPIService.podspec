@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "iOSAPIService"
-  spec.version      = "0.0.1"
+  spec.version      = "1.0.0"
   spec.summary      = "A short description of iOSAPIService."
 
   # This description is used to generate tags and improve search results.
@@ -25,9 +25,10 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
+This library provides API services for iOS applications.
                    DESC
 
-  spec.homepage     = "http://EXAMPLE/iOSAPIService"
+  spec.homepage     = "https://github.com/nguyenthanhnhut5897/iOSAPIService"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,8 +39,8 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  #  spec.license      = "MIT (example)"
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -52,9 +53,9 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "Nguyen Thanh Nhut" => "nhut.nguyen@c2c-techhub.io" }
+  spec.author             = { "Nguyen Thanh Nhut" => "nguyennhut581997@gmail.com" }
   # Or just: spec.author    = "Nguyen Thanh Nhut"
-  # spec.authors            = { "Nguyen Thanh Nhut" => "nhut.nguyen@c2c-techhub.io" }
+  # spec.authors            = { "Nguyen Thanh Nhut" => "nguyennhut581997@gmail.com" }
   # spec.social_media_url   = "https://twitter.com/Nguyen Thanh Nhut"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -64,7 +65,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+  # spec.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -79,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/iOSAPIService.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/nguyenthanhnhut5897/iOSAPIService.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
