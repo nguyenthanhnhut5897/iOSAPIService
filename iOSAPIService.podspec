@@ -64,7 +64,7 @@ This library provides API services for iOS applications.
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  spec.platform     = :ios
+  #  spec.platform     = :ios
   spec.platform     = :ios, "11.0"
 
   #  When using multiple platforms
