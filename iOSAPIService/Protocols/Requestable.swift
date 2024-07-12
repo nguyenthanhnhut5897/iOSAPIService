@@ -10,7 +10,7 @@ import Foundation
 public protocol Requestable {
     
     // The response of Requestable
-    associatedtype Response
+    associatedtype Response: Decodable
     
     // MARK: - Genaral
     

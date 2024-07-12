@@ -11,17 +11,17 @@ public protocol ApiServiceProtocol {
     typealias CompletionHandler<E> = (Result<E, DataTransferError>, Data?) -> Void
     
     @discardableResult
-    func send<E, T>(
+    func send<T>(
         with request: T,
         on queue: DataTransferDispatchQueue,
-        completion: @escaping CompletionHandler<E>
-    ) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable
+        completion: @escaping CompletionHandler<T.Response>
+    ) -> SessionCancellable? where T : Requestable
     
     @discardableResult
-    func send<E, T, C>(
+    func send<T, C>(
         with request: T,
         config: C,
         on queue: DataTransferDispatchQueue,
-        completion: @escaping CompletionHandler<E>
-    ) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable, C : ApiConfigurable
+        completion: @escaping CompletionHandler<T.Response>
+    ) -> SessionCancellable? where T : Requestable, C : ApiConfigurable
 }

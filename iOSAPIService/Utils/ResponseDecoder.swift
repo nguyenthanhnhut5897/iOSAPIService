@@ -8,10 +8,10 @@
 import Foundation
 
 public protocol ResponseDecoder {
-    func decode<E, T>(
+    func decode<T>(
         data: Data?,
         from request: T
-    ) -> Result<E, DataTransferError> where E : Decodable, T : Requestable, E == T.Response
+    ) -> Result<T.Response, DataTransferError> where T : Requestable
 }
 
 public struct DefaultResponseDecoder: ResponseDecoder {
@@ -21,15 +21,15 @@ public struct DefaultResponseDecoder: ResponseDecoder {
         self.errorLogger = DefaultDataErrorLogger()
     }
     
-    public func decode<E, T>(
+    public func decode<T>(
         data: Data?,
         from request: T
-    ) -> Result<E, DataTransferError> where E : Decodable, T : Requestable, E == T.Response {
+    ) -> Result<T.Response, DataTransferError> where T : Requestable {
         
         do {
             guard let data = data else { return .failure(.noResponse) }
             
-            let result = try request.decoder.decode(E.self, from: data)
+            let result = try request.decoder.decode(T.Response.self, from: data)
             
             return .success(result)
         } catch {

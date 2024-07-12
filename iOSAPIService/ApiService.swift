@@ -49,16 +49,16 @@ public class ApiService {
 
 extension ApiService: ApiServiceProtocol {
     @discardableResult
-    public func send<E, T>(
+    public func send<T>(
         with request: T,
         on queue: DataTransferDispatchQueue = DispatchQueue.main,
-        completion: @escaping CompletionHandler<E>
-    ) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable {
+        completion: @escaping CompletionHandler<T.Response>
+    ) -> SessionCancellable? where T : Requestable {
         
         return apiSessionService.send(request: request) { result in
             switch result {
             case .success(let data):
-                let result: Result<E, DataTransferError> = self.decoder.decode(data: data, from: request)
+                let result: Result<T.Response, DataTransferError> = self.decoder.decode(data: data, from: request)
                 
                 queue.asyncExecute {
                     completion(result, data)
@@ -74,17 +74,17 @@ extension ApiService: ApiServiceProtocol {
     }
     
     @discardableResult
-    public func send<E, T, C>(
+    public func send<T, C>(
         with request: T,
         config: C,
         on queue: DataTransferDispatchQueue = DispatchQueue.main,
-        completion: @escaping CompletionHandler<E>
-    ) -> SessionCancellable? where E : Decodable, E == T.Response, T : Requestable, C : ApiConfigurable {
+        completion: @escaping CompletionHandler<T.Response>
+    ) -> SessionCancellable? where T : Requestable, C : ApiConfigurable {
         
         return apiSessionService.send(request: request, config: config) { result in
             switch result {
             case .success(let data):
-                let result: Result<E, DataTransferError> = self.decoder.decode(data: data, from: request)
+                let result: Result<T.Response, DataTransferError> = self.decoder.decode(data: data, from: request)
                 
                 queue.asyncExecute {
                     completion(result, data)
