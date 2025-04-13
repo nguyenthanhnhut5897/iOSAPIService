@@ -79,14 +79,19 @@ ApiService.shared.send(request) { (result: Result<UserDTO, Error>) in
 
 ### Configure Environment
 
-To configure different environments (development, staging, production), create an instance of `ApiConfigurable` and assign the appropriate configuration values. For example:
+To configure different environments (development, staging, production), create an instance of `ApiConfigurable` and assign the appropriate configuration values. 
+
+This setup not only supports switching between environments, but also allows you to configure API requests per service or source. For example, if your backend is structured into multiple microservices (e.g., auth, user, product), or if you are calling third-party APIs, each can have its own configuration instance that includes specific base URLs, headers, or other metadata.
+
+For example:
 
 ```swift
 // Configuring the environment
 let apiConfig = ApiConfig()
 apiConfig.baseURL = URL(string: "https://api.example.com")
-apiConfig.headers = ["Authorization": "Bearer token"]
-apiConfig.environment = .production
+apiConfig.sessionToken = "Bearer token"
+apiConfig.additionalHeaders = ["langKey": "en"]
+
 ```
 
 ---
